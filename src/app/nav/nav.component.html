@@ -1,0 +1,80 @@
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+
+      <button class="botaoResponsivo" type="button" mat-button (click)="drawer.toggle()">
+        <mat-icon style="position: absolute; top: 50%; left: 50%; transform:translate(-50%, -50%)">close</mat-icon>
+      </button>
+
+      <img src="assets/imgs/cloud_white.png" alt=""  class="imagem">
+
+      <h1 style="text-align: center; color: white; padding-bottom: 25px;">Z-Hotel</h1>
+
+      <mat-nav-list class="nav-list">
+        <a href="/home" mat-list-item> Página Principal </a>
+
+        <div class="plus">
+            <div>
+              <label for="NavBarra">
+                <a mat-list-item
+                  ><i mat-list-item class="material-icons">developer_board</i
+                  >⠀Cadastros <mat-icon>keyboard_arrow_down</mat-icon></a
+                >
+              </label>
+            </div>
+    
+            <div class="IsAtivo">
+              <input type="checkbox" name="check" id="NavBarra" />
+    
+              <div class="Barra">
+                <ul>
+                  <li>
+                    <a mat-list-item href="/home/Proprietários" [style.display]="ProprierariosDisplay">
+                      <i class="material-icons">supervised_user_circle</i>⠀Proprietários
+                    </a>
+                  </li>
+                  <li>
+                    <a mat-list-item href="/home/Hotéis" [style.display]="ProprierariosDisplay">
+                      <i class="material-icons">domain</i>⠀Hotéis
+                    </a>
+                  </li>
+                  <li>
+                    <a mat-list-item href="{{Quartos}}">
+                      <i class="material-icons">hotel</i>⠀Quartos
+                    </a>
+                  </li>
+                  <li>
+                    <a mat-list-item href="/home/movimentos">
+                      <i class="material-icons">local_offer</i>⠀Movimentação
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+
+          <a
+           mat-list-item
+           href="https://api.whatsapp.com/send?phone=551634421771"
+           target="_blank"
+          >
+            <i class="material-icons">help</i>⠀Precisa de Ajuda?
+          </a>
+
+          <a (click)="logout()" mat-list-item> 
+            <i class="material-icons">exit_to_app</i>⠀Sair
+          </a>
+      </mat-nav-list>
+    </mat-drawer>
+    
+  
+    <div class="example-sidenav-content">
+      <button class="botao" type="button" mat-button (click)="drawer.toggle()">
+        <mat-icon style="position: absolute; top: 50%; left: 50%; transform:translate(-50%, -50%)">reorder</mat-icon>
+      </button>
+
+      <div class="MeuContainer">
+        <router-outlet></router-outlet>
+      </div>
+
+    </div>

@@ -1,0 +1,90 @@
+.example-container {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .example-sidenav-content {
+    display: flex;
+    height: 100%;
+    background: linear-gradient(15deg, white 34%, lightgrey 80%);
+  }
+
+  .mat-list-base .mat-list-item {
+    font-size: 20px;
+ 
+    color: white;
+  }
+
+  .botaoResponsivo {
+    position: absolute;
+    top: 40px;
+    right: 10px;
+    display: none;
+}
+
+  .botao {
+    position: absolute;
+    padding: 0px;
+    width: 40px;
+    height: 40px;
+    left: 20px;
+    top: 20px;
+    color: white;
+    background: linear-gradient(
+    225deg,
+    #3B3A34 0%,
+    #7A796C 100%
+  );
+    border: 1px solid lightgray;
+    z-index: 100;
+  }
+  .plus label {
+    cursor: pointer;
+  }
+  .imagem {
+    width: 200px; 
+    margin-left: auto; 
+    transform: translate(30%, 0);
+    height: 180px;
+  }
+  
+  .Barra {
+    display: none;
+    background-color: #404040;
+    width: 100%;
+    z-index: -1;
+    text-align: center;
+    z-index: -1;
+    text-align: center;
+    display: none;
+    transition: 400ms;
+  }
+  
+  .Barra li {
+    list-style: none;
+    z-index: 14;
+  }
+  
+  .Barra ul {
+    padding: 0;
+    margin: 0;
+    z-index: 14;
+  }
+  
+  #NavBarra {
+    display: none;
+  }
+  
+  #NavBarra:checked ~ .Barra {
+    display: block;
+  }
+
+  @media screen and (max-width:900px) {
+    .botaoResponsivo {
+      display: block;
+  }
+  .imagem {
+    transform: translate(-40%, 0);
+    display: block;
+  }
+  }

@@ -1,0 +1,15 @@
+.fullWidth {
+    width: 50vh;
+    margin: 100px;
+}
+
+.fullWidth2 {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.section {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+ }

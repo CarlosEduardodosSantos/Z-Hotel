@@ -1,0 +1,126 @@
+<h1 style="top: 20px; text-align: center; margin-bottom: 30px;">Atualizar Quarto</h1>
+
+<mat-card class="card mat-elevation-z8 ContainerPrincipal">
+
+  <form  
+  enctype="multipart/form-data"
+  #AlterarProprietario="ngForm"
+  (ngSubmit)="onSubmit(AlterarProprietario.value)">
+    <img
+      class="fullWidth"
+      src="assets/imgs/tecnico-create.svg"
+      alt="Help Desk - Dicas de um DEV"
+    />    
+    <br>
+    <mat-form-field class="fullWidth2" appearance="legacy">
+      <mat-label>Hotel</mat-label>
+      <mat-select name="hotel" ngModel
+      [(value)]="_hotel"
+      required
+      matInput>
+        <mat-option *ngFor="let hotel of hoteis.results" [value]="hotel.nome">
+          {{hotel.nome}}
+        </mat-option>
+      </mat-select>
+      <mat-icon matSuffix>business</mat-icon>
+    </mat-form-field>
+<br>
+    <mat-form-field class="fullWidth2" appearance="legacy">
+      <mat-label>Quarto</mat-label>
+      <input
+        name="quarto"
+        [(ngModel)]="Quarto.quarto"
+        type="text" 
+        required
+        matInput
+        placeholder="Ex.. 154 B"
+      />
+      <mat-icon matSuffix>hotel</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="fullWidth2" appearance="legacy">
+      <mat-label>Valor Da Limpeza</mat-label>
+      <input
+        name="valor_limpeza"
+        [(ngModel)]="Quarto.valor_limpeza"
+        type="text"
+        prefix="R$ "
+        onfocus="this.value='R$ '"
+        mask="separator.2"
+        thousandSeparator=" "
+        required
+        matInput
+        placeholder="Ex.. R$ 80,00"
+        (keydown)="funcao($event)"
+      />
+      <mat-icon matSuffix>attach_money</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="fullWidth2" appearance="legacy">
+      <mat-label>Valor Do Condomínio</mat-label>
+      <input
+        name="valor_condominio"
+        [(ngModel)]="Quarto.valor_condominio"
+        type="text"
+        prefix="R$ "
+        onfocus="this.value='R$ '"
+        mask="separator.2"
+        thousandSeparator=" "
+        required
+        matInput
+        placeholder="Ex.. R$ 150,00"
+        (keydown)="funcao($event)"
+      />
+      <mat-icon matSuffix>money</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="fullWidth2" appearance="legacy">
+      <mat-label>Observação</mat-label>
+      <input
+        name="obs"
+        [(ngModel)]="Quarto.obs"
+        type="text"
+        matInput
+      />
+      <mat-icon matSuffix>rate_review</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="fullWidth2" appearance="legacy">
+      <mat-label>Status</mat-label>
+      <mat-select 
+        name="status" 
+        [(ngModel)]="Quarto.status"
+        required
+        matInput>
+        <mat-option value="D" style="color: green;">
+          Disponível
+        </mat-option>
+        <mat-option value="S" style="color: rgb(255, 204, 0);">
+          Limpando
+        </mat-option>
+        <mat-option value="O" style="color: red;">
+          Ocupado
+        </mat-option>
+        </mat-select>
+        <mat-icon matSuffix>payment</mat-icon>
+    </mat-form-field>
+
+    <button
+      type="submit"
+      class=" fullWidth2 mat-elevation-z4 cad"
+      mat-flat-button
+      [disabled]="IsDisabled"
+    >
+      Atualizar
+    </button>
+    <button
+      [routerLink]="routerLinkQuartos"
+      class=" fullWidth2 mat-elevation-z4"
+      mat-stroked-button
+      color="warn"
+    >
+      Cancelar
+    </button>
+  </form>
+
+</mat-card>

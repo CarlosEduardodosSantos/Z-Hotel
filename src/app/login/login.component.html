@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="form mat-elevation-z8">
+      <h1>Bem Vindo(a) ao Z-Hotel!</h1>
+  
+      <img src="assets/imgs/logo_novo.png" alt="Faça seu Login" />
+  
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Usuário</mat-label>
+        <input
+        required
+         matInput 
+         placeholder="Ex. José Delisberto" 
+         #nome />
+        <mat-icon matSuffix>email</mat-icon>
+      </mat-form-field>
+  
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Senha</mat-label>
+        <input
+          required
+          type="password"
+          matInput
+          placeholder="Ex. Senha"
+          #senha
+          (keydown)="PressEnter($event, nome.value, senha.value)"
+        />
+        <mat-icon matSuffix>password</mat-icon>
+      </mat-form-field>
+
+      <button
+        class="cad full-width mat-elevation-z4"
+        style="color: white;"
+        (click)="VerificaLogin(nome.value, senha.value)"
+        mat-stroked-button
+      >
+        Login
+      </button>
+    </div>
+  </div>

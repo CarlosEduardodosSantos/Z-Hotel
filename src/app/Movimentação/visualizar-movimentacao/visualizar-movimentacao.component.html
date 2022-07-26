@@ -1,0 +1,141 @@
+<div class="Exclusao" [style.display]="DisplayBack" [style.animation]="AnimacaoBack">
+</div>
+
+<div [style.display]="DisplayDosDetalhes" [style.animation]="AnimacaoDetalhes" class="Caixa">
+  <div class="Fechar"><div (click)="FecharDetalhes()" class="Fechar2"><H1>x</H1></div></div>
+  <div class="Caixa2">
+    <div class="PosicaoGeral">
+      <div class="Divisoria1">
+        <div class="itens">
+          <h1 style="font-weight: bolder;">Quarto</h1>
+          <h1>Hospede</h1>
+          <h1>Check-IN</h1>
+          <h1>Hora do Check-IN</h1>
+          <h1>Check-OUT</h1>
+          <h1>Hora do Check-OUT</h1>
+          <h1>Diárias</h1>
+          <h1>Quantidade de Adultos</h1>
+          <h1>Quantidade de Crianças</h1>
+          <h1>Valor da Diária</h1>
+          <h1>Valor Total</h1>
+          <h1>Forma De Pagamento</h1>
+          <h1>Reserva pelo booking?</h1>
+          <h1>Observação</h1>
+        </div>
+      </div>
+      <div class="Divisoria2">
+        <div class="itens">
+          <h1 style="font-weight: bolder;">{{NomeQuarto}}</h1>
+          <h1>{{Hospede}}</h1>
+          <h1>{{converterLongDate(CheckIN)}}</h1>
+          <h1>{{CheckIn(CheckIN)}}</h1>
+          <h1>{{converterLongDate(CheckOUT)}}</h1>
+          <h1>{{CheckIn(CheckOUT)}}</h1>
+          <h1>{{Diarias}}</h1>
+          <h1>{{QtdAdultos}}</h1>
+          <h1>{{QtdCriancas}}</h1>
+          <h1>{{Preco(Valor)}}</h1>
+          <h1>{{Pagamento(Valor, Diarias)}}</h1>
+          <h1>{{ConvertePGTO(FormaDePagamento)}}</h1>
+          <h1>{{Booking}}</h1>
+          <h1>{{Observacao}}</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="CardBox" [style.display]="DisplayCard" [style.animation]="AnimacaoCard">
+  <h1 class="Texto">Tem Certeza Que Deseja Fazer <br> A Exclusão Desse Registro?</h1>
+  <button class="ConfirmarExclu"
+  mat-stroked-button
+   [disabled]="IsDisabled"
+   (click) = "deletar(codigoExclu)"
+   >Confirmar</button>
+
+  <button class="CancelarExclu"
+  mat-stroked-button
+  (click)="Cancelar()" [disabled]="IsDisabled">
+  Cancelar
+  </button>
+</div>
+
+<H1 style="text-align: center"> Quarto: {{NomeQuarto}} </H1>
+
+<mat-card class="card mat-elevation-z8 Tabela">
+  <mat-form-field appearance="standard" style="width: 100%;">
+    <mat-label>Filtro</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="Ex. diego importações"
+      #input
+    />
+  </mat-form-field>
+
+    <table mat-table [dataSource]="dataSource" matSort>
+    
+          <ng-container matColumnDef="hospede">
+            <th mat-header-cell *matHeaderCellDef class="Coluna" mat-sort-header> Hospede </th>
+            <td mat-cell *matCellDef="let element"> {{element.hospede}} </td>
+          </ng-container>
+    
+          <ng-container matColumnDef="checkin">
+            <th mat-header-cell *matHeaderCellDef class="Coluna"> Check-IN </th>
+            <td mat-cell *matCellDef="let element" class="Coluna"> {{converterLongDate(element.checkin)}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="checkout">
+            <th mat-header-cell *matHeaderCellDef class="Coluna checkout" mat-sort-header> Check-OUT </th>
+            <td mat-cell *matCellDef="let element" class="Coluna">{{converterLongDate(element.checkout)}}</td>
+          </ng-container> 
+
+          <ng-container matColumnDef="valor">
+            <th mat-header-cell *matHeaderCellDef class="Coluna valor" mat-sort-header> Valor </th>
+            <td mat-cell *matCellDef="let element" class="Coluna">{{Pagamento(element.valor, element.diarias)}}</td>
+          </ng-container>  
+
+          <ng-container matColumnDef="Detalhes">
+            <th mat-header-cell *matHeaderCellDef class="Coluna" mat-sort-header> Detalhes </th>
+            <td mat-cell *matCellDef="let element"><button (click)="ApareceDetalhes(element.nro)" mat-button class="MeuBotao" color="primary">+</button></td>
+          </ng-container> 
+
+          <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef>Deletar</th>
+            <td mat-cell *matCellDef="let element">
+              <a style="cursor:pointer ;">
+                <i class="material-icons delete" (click)="ApareceCard(element.nro)">delete</i>
+              </a>
+            </td>
+          </ng-container>
+          
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <mat-paginator
+      [pageSizeOptions]="[5, 2, 10, 20, 50, 100]"
+      showFirstLastButtons
+    ></mat-paginator>
+
+</mat-card>
+
+<button class="cad full-width mat-elevation-z4" style="margin-bottom: 20px;" routerLink="/home/{{nro}}/{{NomeQuarto}}/CadastroDeMovimentacao">
+  Cadastrar Nova Reserva
+</button>
+
+<button
+      routerLink="/home/movimentos"
+      class=" fullWidth2 mat-elevation-z4"
+      mat-stroked-button
+      color="warn"
+      style="margin-bottom: 85px; font-size: 18px;"
+    >
+      Cancelar
+</button>
+
+<div style="position: absolute;">
+    <footer class="footer">
+        <img src="assets/imgs/cloud_white.png" style="height: 40px;" alt=""> Desenvolvido por: <a href="https://www.zipsoftware.com.br" class="link">ZiP Software© 2022</a>
+    </footer>
+</div>

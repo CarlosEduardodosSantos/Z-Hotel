@@ -1,0 +1,116 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/ngx-toastr/toastr.css';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.cad {
+    background: #404040;
+    color: white;
+    cursor: pointer;
+    border-width: 0;
+}
+
+.ContainerPrincipal {
+  width: 600px; 
+  border-left:20px solid white; 
+  margin-bottom: 25px;
+  border-right:20px solid white;
+  border-bottom:10px solid white;
+  bottom: 25px;
+}
+
+.ConfirmarExclu {
+    position: relative;
+    background: linear-gradient(180deg, #02F73E 0%, #14E008 100%);
+    color: white;
+    bottom: 20px;
+    left: 130px;
+    width: 100px;
+    height: 40px;
+    margin-top: 20px !important;
+  }
+
+  .CancelarExclu {
+    position: relative;
+    color: red;
+    bottom: 20px;
+    width: 100px;
+    left: 220px;
+    height: 40px;
+  }
+
+.link {
+    text-decoration: none;
+    font-weight: bolder;
+    color: black;
+}
+
+.example-sidenav {
+    padding-top: 20px;
+    width: 320px;
+  background: linear-gradient(
+    190deg,
+    #0D0D0D 0%,
+    #404040 0%,
+    #A6A6A6 100%
+  );
+  }
+
+.MeuContainer {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    margin-bottom: 70px;
+  }
+
+.footer {
+    position: fixed;
+    width: 100%;
+    height: 65px;
+    left: 0;
+    bottom: 0;
+    background: linear-gradient(
+    90deg,
+    #0D0D0D 0%,
+    #404040 0%,
+    #A6A6A6 100%
+  );
+    border-top: 5px solid lightgray;
+    text-align: center;
+    font-size: 20px;
+}
+
+.footer img {
+    transform: translate(0, 30%);
+}
+
+@media only screen and (max-width: 600px) {
+    .footer {
+        display: none;
+    }
+
+    .MeuContainer {
+        margin-top: 70px;
+    }
+
+    .example-sidenav {
+        width: 105%;
+    }
+
+    .ContainerPrincipal {
+      width: 200px;
+    }
+
+    img {
+      display: none;
+    }
+
+    .ConfirmarExclu {
+      left: 50px;
+    }
+  
+    .CancelarExclu {
+      left: 100px;
+    }
+}

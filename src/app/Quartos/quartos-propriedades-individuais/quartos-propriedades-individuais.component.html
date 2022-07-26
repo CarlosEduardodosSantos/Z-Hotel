@@ -1,0 +1,127 @@
+<div class="Exclusao" [style.display]="DisplayBack" [style.animation]="AnimacaoBack">
+</div>
+
+<div [style.display]="DisplayDosDetalhes" [style.animation]="AnimacaoDetalhes" class="Caixa">
+  <div class="Fechar"><div (click)="FecharDetalhes()" class="Fechar2"><H1>x</H1></div></div>
+  <div class="Caixa2">
+    <div class="PosicaoGeral">
+      <div class="Divisoria1">
+        <div class="itens">
+          <h1>Hotel</h1>
+          <h1>Quarto</h1>
+          <h1>Valor Da Limpeza</h1>
+          <h1>Valor Do Hotel</h1>
+          <h1>Status</h1>
+          <h1>Observação</h1>
+        </div>
+      </div>
+      <div class="Divisoria2">
+        <div class="itens">
+          <h1>{{Hotel}}</h1>
+          <h1>{{Quarto}}</h1>
+          <h1>{{converterCurrency(Valor_Limpeza)}}</h1>
+          <h1>{{converterCurrency(Valor_Condominio)}}</h1>
+          <h1>{{ConverterStatus(status)}}</h1>
+          <h1>{{obs}}</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="CardBox" [style.display]="DisplayCard" [style.animation]="AnimacaoCard">
+  <h1 class="Texto">Tem Certeza Que Deseja Fazer <br> A Exclusão Desse Registro?</h1>
+  <button class="ConfirmarExclu"
+  mat-stroked-button
+   [disabled]="IsDisabled"
+   (click) = "deletar(codigoExclu)"
+   >Confirmar</button>
+
+  <button class="CancelarExclu"
+  mat-stroked-button
+  (click)="Cancelar()" [disabled]="IsDisabled">
+  Cancelar
+  </button>
+</div>
+
+<H1 style="text-align: center"> Cadastro de Quartos</H1>
+
+<mat-card class="card mat-elevation-z8 Tabela">
+  <mat-form-field appearance="standard" style="width: 100%;">
+    <mat-label>Filtro</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="Ex. diego importações"
+      #input
+    />
+  </mat-form-field>
+
+    <table mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="nro">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="numero" mat-sort-header> No. </th>
+            <td mat-cell *matCellDef="let element" class="numero"> {{element.nro}} </td>
+          </ng-container>
+    
+          <ng-container matColumnDef="hotel">
+            <th mat-header-cell *matHeaderCellDef class="Coluna hotel" mat-sort-header> Hotel </th>
+            <td mat-cell *matCellDef="let element" class="Coluna"> {{element.hotel}} </td>
+          </ng-container>
+    
+          <ng-container matColumnDef="quarto">
+            <th mat-header-cell *matHeaderCellDef class="Coluna"> Quarto </th>
+            <td mat-cell *matCellDef="let element" class="Coluna"> {{element.quarto}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="valor_limpeza">
+            <th mat-header-cell *matHeaderCellDef class="Coluna VlrLimpeza" mat-sort-header> Valor Da Limpeza </th>
+            <td mat-cell *matCellDef="let element" class="Coluna VlrLimpeza">{{converterCurrency(element.valor_limpeza)}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="valor_condominio">
+            <th mat-header-cell *matHeaderCellDef style="padding-left: 40px;" class="Coluna VlrDiaria" mat-sort-header> Diária </th>
+            <td mat-cell *matCellDef="let element" class="Coluna VlrDiaria">{{converterCurrency(element.valor_condominio)}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef class="Coluna Status" mat-sort-header> Status </th>
+            <td mat-cell *matCellDef="let element" class="Coluna Status2">{{ConverterStatus(element.status)}}</td>
+          </ng-container> 
+
+          <ng-container matColumnDef="detalhes">
+            <th mat-header-cell *matHeaderCellDef style="padding-left: 35px;" class="Coluna" mat-sort-header> Detalhes </th>
+            <td mat-cell *matCellDef="let element" class="Coluna Status2"><button (click)="ApareceDetalhes(element.nro)" mat-button class="MeuBotao" color="primary">+</button></td>
+          </ng-container> 
+
+          <ng-container matColumnDef="acoes">
+            <th mat-header-cell *matHeaderCellDef>Ações</th>
+            <td mat-cell *matCellDef="let element">
+              <a routerLink="/home/AtualizarQuarto/{{element.nro}}">
+                <i class="material-icons edit">edit</i>
+              </a>
+              <button class="deletebtn" (click)="ApareceCard(element.nro)">
+                <i class="material-icons delete">delete</i>
+              </button>
+            </td>
+          </ng-container>
+          
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <mat-paginator
+      [pageSizeOptions]="[5, 2, 10, 20, 50, 100]"
+      showFirstLastButtons
+    ></mat-paginator>
+
+</mat-card>
+
+<button class="cad full-width mat-elevation-z4" style="margin-bottom: 85px;" routerLink="/home/CadastroDeQuartos">
+Cadastrar Novo Quarto
+</button>
+
+<div style="position: absolute;">
+    <footer class="footer">
+        <img src="assets/imgs/cloud_white.png" style="height: 40px;" alt=""> Desenvolvido por: <a href="https://www.zipsoftware.com.br" class="link">ZiP Software© 2022</a>
+    </footer>
+</div>

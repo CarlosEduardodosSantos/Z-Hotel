@@ -1,0 +1,26 @@
+.fullWidth {
+    width: 50vh;
+    margin: 100px;
+}
+
+.fullWidth2 {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.ngx-material-timepicker-example__form-group {
+    position: relative;
+    width: 100%;
+    height: 36px;
+    border-bottom: 1px solid rgb(120, 120, 120);
+}
+
+.section {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+ }
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: #404040;
+}

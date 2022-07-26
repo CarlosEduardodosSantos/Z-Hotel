@@ -1,0 +1,163 @@
+.full-width {
+    height: 40px;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 20px;
+}
+
+.Coluna {
+    width: 100px;
+    text-align: center;
+}
+
+.deletebtn {
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: #404040;
+}
+
+.edit {
+    color: rgb(0, 153, 255);
+}
+  
+.delete {
+    color: red;
+}
+
+.Exclusao {
+    background-color: black;
+    opacity: 70%;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 112.3%;
+    position: fixed;
+}
+  
+.CardBox {
+    z-index: 101;
+    position: fixed;
+    margin: 0 auto;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 550px;
+    height: 250px;
+    background: white;
+    border-radius: 15px;
+}
+
+.Nome {
+  padding-left: 55px;
+}
+
+.Admin {
+  text-align: left;
+  padding-left: 15px;
+}
+
+.Tabela {
+  border-left:20px solid white; 
+  border-right:20px solid white; 
+  border-bottom:10px solid white; 
+  margin-bottom: 25px;
+}
+
+.numero {
+  padding-right: 50px;
+}
+  
+.Texto {
+    position: relative;
+    margin-top: 60px;
+    padding-bottom: 50px;
+    text-align: center;
+    border-bottom: 2px solid lightgrey;
+}
+
+@media screen and (max-width: 600px) {
+  .numero {
+    display: none;
+  }
+
+  .CardBox {
+    width: 350px;
+  }
+
+  .login {
+    display: none;
+  }
+
+  .acoes {
+    padding-right: 0;
+  }
+
+  .Tabela {
+    border-left:0; 
+    border-right:0; 
+    border-bottom:0; 
+    width: 300px;
+  }
+
+  .mat-column-isAdmin {
+    display: none;
+  }
+
+  .mat-column-nome {
+    min-width: 59px;
+    max-width: 60px;
+  }
+
+  .Nome {
+    padding-left: 40px;
+  }
+}
+
+@keyframes apareceTexto {
+    from {
+      opacity: 0%;
+    }
+    
+    to {
+      opacity: 100%;
+    }
+    
+  }
+  
+  @keyframes apareceBack {
+    from {
+      opacity: 0%;
+    }
+    
+    to {
+      opacity: 70%;
+    }
+    
+  }
+  
+  @keyframes someTexto {
+    from {
+      opacity: 100%;
+    }
+    
+    to {
+      opacity: 0%;
+    }
+  }
+  
+  @keyframes someBack {
+    from {
+      opacity: 70%;
+    }
+    
+    to {
+      opacity: 0%;
+    }
+  }
